@@ -25,12 +25,12 @@ class Peer {
     info(`Listening to ${port}: ${this.id}`)
     sw.join(cfg.NET_NAME)
 
-    sw.on('connection', (conn, info) => {
+    sw.on('connection', (conn, data) => {
       const seq = this.seq
-      const peerid = info.id.toString('hex')
+      const peerid = data.id.toString('hex')
       info(`Connected #${seq} => ${peerid}`)
-
-      if (info.initiator) {
+      info('data', data)
+      if (data.initiator) {
         try {
           conn.setKeepAlive(true, 600)
         } catch (e) {
