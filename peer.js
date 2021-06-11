@@ -18,7 +18,7 @@ class Peer {
     this.peers = []
     this.seq = 0
 
-    const sw = Swarm({ id: this.id })
+    const sw = Swarm(defaults({ id: this.id }))
     const port = await getPort()
     this.port = port
     sw.listen(port)
