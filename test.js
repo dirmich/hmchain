@@ -14,8 +14,9 @@
 // const db = utils.verify(k.public, obj, sb)
 // console.log(sb, db)
 
-// const Peer = require('./peer')
-// const p = new Peer()
+const Peer = require('./peer')
+const p = new Peer()
+
 // const mdns = require('mdns')
 
 // const ad = mdns.createAdvertisement(mdns.tcp('hello'), 3456)
@@ -33,17 +34,17 @@
 
 // worker.start()
 
-var mdns = require('mdns-js')
-//if you have another mdns daemon running, like avahi or bonjour, uncomment following line
-//mdns.excludeInterface('0.0.0.0');
+// var mdns = require('mdns-js')
+// //if you have another mdns daemon running, like avahi or bonjour, uncomment following line
+// //mdns.excludeInterface('0.0.0.0');
 
-var browser = mdns.createBrowser()
+// var browser = mdns.createBrowser()
 
-browser.on('ready', function () {
-  browser.discover()
-})
+// browser.on('ready', function () {
+//   browser.discover()
+// })
 
-browser.on('update', function (data) {
-  if (data.type.filter((i) => i.name === 'hello').length > 1)
-    console.log('data:', data)
-})
+// browser.on('update', function (data) {
+//   if (data.type.filter((i) => i.name === 'hello').length > 1)
+//     console.log('data:', data)
+// })

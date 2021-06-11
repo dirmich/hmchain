@@ -21,7 +21,7 @@ class Peer {
     const sw = Swarm(defaults({ id: this.id, announce: false }))
     this.sw = sw
 
-    const port = await getPort()
+    const port = 3456 //await getPort()
     this.port = port
     sw.listen(port)
     info(`Listening to ${port}: ${this.id}`)
