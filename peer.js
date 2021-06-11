@@ -63,7 +63,7 @@ class Peer {
       const peerid = data.id.toString('hex')
       info(`Connected #${seq} => ${peerid}`)
       //   info('conn', conn)
-      info('data', data)
+      info('data', data.host, data.port)
       if (data.initiator) {
         try {
           conn.setKeepAlive(true, 600)
@@ -71,7 +71,7 @@ class Peer {
           err('ERR', e)
         }
       } else {
-        // conn.send('hello')
+        conn.write('hello')
       }
 
       conn.on('data', (d) => {
