@@ -13,3 +13,7 @@ console.log(sa, da)
 const sb = utils.sign(k.private, obj)
 const db = utils.verify(k.public, obj, sb)
 console.log(sb, db)
+
+const Peer = require('./peer')
+
+const p = new Peer()
