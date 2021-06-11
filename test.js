@@ -16,19 +16,33 @@
 
 // const Peer = require('./peer')
 // const p = new Peer()
-const mdns = require('mdns')
+// const mdns = require('mdns')
 
-const ad = mdns.createAdvertisement(mdns.tcp('hello'), 3456)
-ad.start()
+// const ad = mdns.createAdvertisement(mdns.tcp('hello'), 3456)
+// ad.start()
 
-const worker = mdns.createBrowser(mdns.tcp('hello'))
+// const worker = mdns.createBrowser(mdns.tcp('hello'))
 
-worker.on('serviceUp', (service) => {
-  console.log('UP: ', service)
+// worker.on('serviceUp', (service) => {
+//   console.log('UP: ', service)
+// })
+
+// worker.on('serviceDown', (service) => {
+//   console.log('DOWN: ', service)
+// })
+
+// worker.start()
+
+var mdns = require('mdns-js')
+//if you have another mdns daemon running, like avahi or bonjour, uncomment following line
+//mdns.excludeInterface('0.0.0.0');
+
+var browser = mdns.createBrowser()
+
+browser.on('ready', function () {
+  browser.discover()
 })
 
-worker.on('serviceDown', (service) => {
-  console.log('DOWN: ', service)
+browser.on('update', function (data) {
+  console.log('data:', data)
 })
-
-worker.start()
