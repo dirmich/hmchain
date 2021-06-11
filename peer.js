@@ -18,7 +18,7 @@ class Peer {
     this.peers = []
     this.seq = 0
 
-    const sw = Swarm(defaults({ id: this.id }))
+    const sw = Swarm(defaults({ id: this.id, announce: false }))
     const port = await getPort()
     this.port = port
     sw.listen(port)
@@ -26,34 +26,34 @@ class Peer {
     sw.join(cfg.NET_NAME)
     // sw.leave(cfg.NET_NAME)
     sw.on('peer', (peer) => {
-      debug('on peer', peer)
+      debug('on peer')
     })
     sw.on('drop', (peer) => {
-      debug('on drop', peer)
+      debug('on drop')
     })
     sw.on('connecting', (peer) => {
-      debug('on connecting', peer)
+      debug('on connecting')
     })
     sw.on('peer-banned', (peer, detail) => {
-      debug('on peer-banned', peer, detail)
+      debug('on peer-banned', detail)
     })
     sw.on('peer-rejected', (peer, detail) => {
-      debug('on peer-rejected', peer, detail)
+      debug('on peer-rejected', detail)
     })
     sw.on('connect-failed', (peer, detail) => {
-      debug('on connect-failed', peer, detail)
+      debug('on connect-failed', detail)
     })
     sw.on('handshaking', (conn, data) => {
-      debug('on handshaking', conn, data)
+      debug('on handshaking', data)
     })
     sw.on('handshake-timeout', (conn, data) => {
-      debug('on handshake-timeout', conn, data)
+      debug('on handshake-timeout', data)
     })
     sw.on('connection-closed', (conn, data) => {
-      debug('on connection-closed', conn, data)
+      debug('on connection-closed', data)
     })
     sw.on('redundant-connection', (conn, data) => {
-      debug('on redundant-connection', conn, data)
+      debug('on redundant-connection', data)
     })
 
     sw.on('connection', (conn, data) => {
@@ -61,7 +61,7 @@ class Peer {
       const peerid = data.id.toString('hex')
       info(`Connected #${seq} => ${peerid}`)
       info('conn', conn)
-      info('data', data)
+      //   info('data', data)
       if (data.initiator) {
         try {
           conn.setKeepAlive(true, 600)
