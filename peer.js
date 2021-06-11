@@ -76,7 +76,7 @@ class Peer {
         debug('recv:', d)
       })
       conn.on('close', () => {
-        info(`Connection #${seq} : ${peerid}`)
+        info(`Connection #${seq} closed : ${peerid}`)
         if (this.peers[peerid].seq === seq) {
           delete this.peers[peerid]
         }
