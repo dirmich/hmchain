@@ -24,6 +24,37 @@ class Peer {
     sw.listen(port)
     info(`Listening to ${port}: ${this.id}`)
     sw.join(cfg.NET_NAME)
+    // sw.leave(cfg.NET_NAME)
+    sw.on('peer', (peer) => {
+      debug('on peer', peer)
+    })
+    sw.on('drop', (peer) => {
+      debug('on drop', peer)
+    })
+    sw.on('connecting', (peer) => {
+      debug('on connecting', peer)
+    })
+    sw.on('peer-banned', (peer, detail) => {
+      debug('on peer-banned', peer, detail)
+    })
+    sw.on('peer-rejected', (peer, detail) => {
+      debug('on peer-rejected', peer, detail)
+    })
+    sw.on('connect-failed', (peer, detail) => {
+      debug('on connect-failed', peer, detail)
+    })
+    sw.on('handshaking', (conn, data) => {
+      debug('on handshaking', conn, data)
+    })
+    sw.on('handshake-timeout', (conn, data) => {
+      debug('on handshake-timeout', conn, data)
+    })
+    sw.on('connection-closed', (conn, data) => {
+      debug('on connection-closed', conn, data)
+    })
+    sw.on('redundant-connection', (conn, data) => {
+      debug('on redundant-connection', conn, data)
+    })
 
     sw.on('connection', (conn, data) => {
       const seq = this.seq
