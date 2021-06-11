@@ -36,9 +36,13 @@ class Peer {
         } catch (e) {
           err('ERR', e)
         }
+      } else {
+        conn.send('hello')
       }
 
-      conn.on('data', (data) => {})
+      conn.on('data', (d) => {
+        debug('recv:', d)
+      })
       conn.on('close', () => {
         info(`Connection #${seq} : ${peerid}`)
         if (this.peers[peerid].seq === seq) {
@@ -47,7 +51,7 @@ class Peer {
       })
       if (!this.peers[peerid]) this.peers[peerid] = {}
       this.peers[peerid].seq = seq
-      this.peers[peerid].conn = con
+      this.peers[peerid].conn = conn
       this.seq++
     })
 
