@@ -44,5 +44,6 @@ browser.on('ready', function () {
 })
 
 browser.on('update', function (data) {
-  console.log('data:', data)
+  if (data.type.filter((i) => i.name === 'hello').length > 1)
+    console.log('data:', data)
 })
