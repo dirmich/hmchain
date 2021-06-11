@@ -22,7 +22,7 @@ class Peer {
     const port = await getPort()
     this.port = port
     sw.listen(port)
-    info('Listening to ', port)
+    info(`Listening to ${port}: ${this.id}`)
     sw.join(cfg.NET_NAME)
 
     sw.on('connection', (conn, info) => {
