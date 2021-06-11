@@ -16,6 +16,11 @@ bencode@^2.0.0:
   dependencies:
     safe-buffer "^5.1.1"
 
+bindings@~1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.2.1.tgz#14ad6113812d2d37d72e67b4cacb4bb726505f11"
+  integrity sha1-FK1hE4EtLTfXLme0ystLtyZQXxE=
+
 bittorrent-dht@^7.10.0:
   version "7.10.0"
   resolved "https://registry.yarnpkg.com/bittorrent-dht/-/bittorrent-dht-7.10.0.tgz#c5d47ddb21b0003a4ce22b11202a505b350ac0ff"
@@ -262,6 +267,14 @@ lru@^3.1.0:
   dependencies:
     inherits "^2.0.1"
 
+mdns@^2.7.2:
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/mdns/-/mdns-2.7.2.tgz#1629077b950e2a9bdb02e370d505ff4fa2ace0ff"
+  integrity sha512-NBOQT22DKvuNWVY7nKNbs6w9eGRyPwnc4ZjKOsCG2G/4wNt1+IyiHvc+5yhcAUZLG46cOY321YW7Ufz3lMtrhw==
+  dependencies:
+    bindings "~1.2.1"
+    nan "^2.14.0"
+
 minimist@^1.2.0:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
@@ -297,6 +310,11 @@ multistream@^2.1.0:
   dependencies:
     inherits "^2.0.1"
     readable-stream "^2.0.5"
+
+nan@^2.14.0:
+  version "2.14.2"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.2.tgz#f5376400695168f4cc694ac9393d0c9585eeea19"
+  integrity sha512-M2ufzIiINKCuDfBSAUr1vWQ+vuVcA9kqx8JJUsbQi6yf1uGRyb7HfpdfUr5qLXf3B/t8dPvcjhKMmlfnP47EzQ==
 
 napi-macros@^2.0.0:
   version "2.0.0"

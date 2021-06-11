@@ -9,6 +9,7 @@
     "dat-swarm-defaults": "^1.0.2",
     "discovery-swarm": "^6.1.0",
     "get-port": "^5.1.1",
-    "keypair": "^1.0.3"
+    "keypair": "^1.0.3",
+    "mdns": "^2.7.2"
   }
 }
