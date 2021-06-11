@@ -62,7 +62,7 @@ class Peer {
       const seq = this.seq
       const peerid = data.id.toString('hex')
       info(`Connected #${seq} => ${peerid}`)
-      //   info('conn', conn)
+      info('conn', conn)
       info('data', data.host, data.port)
       if (data.initiator) {
         try {

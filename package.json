@@ -6,6 +6,7 @@
   "author": "David, Shin",
   "license": "MIT",
   "dependencies": {
+    "bitcoinjs-lib": "^5.2.0",
     "dat-swarm-defaults": "^1.0.2",
     "discovery-swarm": "^6.1.0",
     "get-port": "^5.1.1",
