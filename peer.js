@@ -9,7 +9,7 @@ const err = console.log
 
 class Peer {
   constructor(addr) {
-    this.id = addr | crypto.randomBytes(32).toString('hex')
+    this.id = addr || crypto.randomBytes(32).toString('hex')
 
     this.init()
   }
