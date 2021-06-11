@@ -46,16 +46,16 @@ class Peer {
       debug('on connect-failed', detail)
     })
     sw.on('handshaking', (conn, data) => {
-      debug('on handshaking', data)
+      debug('on handshaking', data.host, data.port)
     })
     sw.on('handshake-timeout', (conn, data) => {
-      debug('on handshake-timeout', data)
+      debug('on handshake-timeout', data.host, data.port)
     })
     sw.on('connection-closed', (conn, data) => {
-      debug('on connection-closed', data)
+      debug('on connection-closed', data.host, data.port)
     })
     sw.on('redundant-connection', (conn, data) => {
-      debug('on redundant-connection', data)
+      debug('on redundant-connection', data.host, data.port)
     })
 
     sw.on('connection', (conn, data) => {
