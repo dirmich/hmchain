@@ -19,6 +19,8 @@ class Peer {
     this.seq = 0
 
     const sw = Swarm(defaults({ id: this.id, announce: false }))
+    this.sw = sw
+
     const port = await getPort()
     this.port = port
     sw.listen(port)
@@ -86,8 +88,6 @@ class Peer {
       this.peers[peerid].conn = conn
       this.seq++
     })
-
-    this.sw = sw
   }
 }
 
