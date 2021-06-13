@@ -1,22 +1,19 @@
-// const utils = require('./utils')
-const utils = require('./crypto')
+// // const utils = require('./utils')
+// const utils = require('./crypto')
 
-const str = 'hello'
-const obj = {
-  a: 1,
-  b: 'hello',
-  c: [1, 2, 3],
-}
-const k = utils.keypair()
-const sa = utils.sign(k.private, utils.hash(str))
-const da = utils.verify(k.public, utils.hash(str), sa)
-console.log(sa.toString('hex'), da)
+// const str = 'hello'
+// const obj = {
+//   a: 1,
+//   b: 'hello',
+//   c: [1, 2, 3],
+// }
+// const k = utils.keypair()
+// const sa = utils.sign(k.private, utils.hash(str))
+// const da = utils.verify(k.public, utils.hash(str), sa)
+// console.log(sa.toString('hex'), da)
 // const sb = utils.sign(k.private, obj)
 // const db = utils.verify(k.public, obj, sb)
 // console.log(sb, db)
-
-const Peer = require('./peer')
-const p = new Peer()
 
 // const mdns = require('mdns')
 
@@ -49,3 +46,18 @@ const p = new Peer()
 //   if (data.type.filter((i) => i.name === 'hello').length > 1)
 //     console.log('data:', data)
 // })
+
+// const Peer = require('./peer')
+// const p = new Peer()
+
+const Wallet = require('./wallet')
+
+const w1 = new Wallet()
+
+w1.create({
+  seedPhrase:
+    'blouse negative until cotton snake airport husband into stereo place scrub obtain',
+  password: '12341234',
+}).then(() => {
+  console.log('==>', w1.addressList(), w1.showSeed())
+})
