@@ -14,20 +14,25 @@ class Wallet {
     return this.keystore.getAddresses()
   }
 
-  addAccount() {}
+  addAddress(n = 1) {
+    this.keystore.generateNewAddress(Buffer.from(this.pkey, 'base64'), n)
+    return this.keystore.getAddresses()
+  }
 
   create({ password, seedPhrase, ...opt }) {
     //
     const option = {
       password,
-      seedPhrase,
       ...{
         salt: keystore.generateSalt(32),
         hdPathString: "m/44'/60'/0'/0",
       },
       ...opt,
     }
-    // console.log('option', option)
+    option.seedPhrase = seedPhrase
+      ? seedPhrase
+      : keystore.generateRandomSeed(keystore.generateSalt(32))
+    console.log('option', option)
     return new Promise((resolve, reject) => {
       keystore.createVault(option, (e, ks) => {
         if (e) reject({ err: e, msg: 'creation' })
@@ -40,8 +45,7 @@ class Wallet {
               ks.passwd = password
               //   resolve({ ks, enc })
               this.keystore = ks
-              this.pkey = Buffer.from(pdkey, 'hex')
-              this.pdkey = pdkey
+              this.pkey = Buffer.from(pdkey, 'hex').toString('base64')
               //   const enc = hm_encrypt(password, ks.serialize())
               resolve(this)
             }
@@ -55,7 +59,7 @@ class Wallet {
     // this.keystore.keyFromPassword(this.password, (e, pdkey) => {
     //   console.log('==>', this.keystore.getSeed(pdkey))
     // })
-    return this.keystore.getSeed(this.pdkey)
+    return this.keystore.getSeed(Buffer.from(this.pkey, 'base64'))
   }
 
   getEcnrypted() {
@@ -75,8 +79,7 @@ class Wallet {
               rk.passwd = password
               this.keystore = rk
               this.password = password
-              this.pkey = Buffer.from(pdkey, 'hex')
-              this.pdkey = pdkey
+              this.pkey = Buffer.from(pdkey, 'hex').toString('base64')
               resolve(this)
             }
           })

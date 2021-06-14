@@ -119,7 +119,8 @@ function hm_salt(enc) {
 function hm_key(passwd, salt) {
   _deriveKey(passwd, salt)
 }
-module.export = { hm_encrypt, hm_decrypt, hm_salt }
+
+module.exports = { hm_encrypt, hm_decrypt, hm_salt }
 // export { hm_encrypt, hm_decrypt, hm_salt }
 // const obj = {
 //   a: 1,

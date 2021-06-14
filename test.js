@@ -58,6 +58,16 @@ w1.create({
   seedPhrase:
     'blouse negative until cotton snake airport husband into stereo place scrub obtain',
   password: '12341234',
-}).then(() => {
-  console.log('==>', w1.addressList(), w1.showSeed())
 })
+  .then(() => {
+    console.log('==>', w1.addressList(), w1.showSeed())
+    console.log('==>', w1.addAddress(5))
+
+    const enc = w1.getEcnrypted()
+
+    const w2 = new Wallet()
+    w2.open(enc, '12341234').then(() => {
+      console.log('==>', w2.addressList(), w2.showSeed())
+    })
+  })
+  .catch((e) => console.log(e))
